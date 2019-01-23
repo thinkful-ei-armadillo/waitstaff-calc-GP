@@ -4,7 +4,7 @@ const STATE = {
   tipTotal: 0,
   mealCount: 0,
   lastTotal: 0,
-  lastTip: 0,
+  lastTip: 0
 };
 
 function showErrors() {}
@@ -23,6 +23,10 @@ function validateInput(input) {
   return reg.test(input);
 }
 
+function displayPrice(input) {
+  return input.toFixed(2);
+}
+
 function calculate(basePrice, taxRate, tipRate) {
   debugger;
   if (!validateInputs([basePrice, taxRate, tipRate])) {
@@ -33,22 +37,23 @@ function calculate(basePrice, taxRate, tipRate) {
   taxRate /= 100;
   tipRate /= 100;
   STATE.mealCount++;
-  let subTotal = Number((basePrice*taxRate+basePrice).toFixed(2));
-  STATE.lastTip = Number((subTotal*tipRate).toFixed(2));
-  STATE.lastTotal = subTotal+STATE.lastTip;
+  let subTotal = basePrice * taxRate + basePrice;
+  STATE.lastTip = subTotal * tipRate;
+  STATE.lastTotal = subTotal + STATE.lastTip;
   STATE.tipTotal += STATE.lastTip;
-  console.log(STATE);
 }
 
-function render(){
-  debugger;
-  $('.js-subtotal').val(STATE.lastTotal-STATE.lastTip);
-  $('.js-tip').val(STATE.lastTip);
-  $('.js-total').val(STATE.lastTotal);
-  
-  $('.js-tip-total').val(STATE.tipTotal);
+function render() {
+  let subTotal = displayPrice(STATE.lastTotal - STATE.lastTip);
+  let avgTip = displayPrice(STATE.tipTotal / STATE.mealCount);
+
+  $('.js-subtotal').val(subTotal);
+  $('.js-tip').val(displayPrice(STATE.lastTip));
+  $('.js-total').val(displayPrice(STATE.lastTotal));
+
+  $('.js-tip-total').val(displayPrice(STATE.tipTotal));
   $('.js-meal-count').val(STATE.mealCount);
-  $('.js-avg-tip').val(STATE.tipTotal / STATE.mealCount);
+  $('.js-avg-tip').val(avgTip);
 }
 
 function handleSubmit() {
@@ -63,7 +68,7 @@ function handleSubmit() {
     const tipRate = $(event.currentTarget)
       .find('.js-tip-input')
       .val();
-    
+
     $('.js-price-input').val('');
     $('.js-tax-input').val('');
     $('.js-tip-input').val('');
