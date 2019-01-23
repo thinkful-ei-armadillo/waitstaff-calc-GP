@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Wait Staff Calculator" />
+    <title>Wait Staff Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header class="container"><h1>Waitstaff Calculator</h1></header>
+    <main class="container" role="main">
+      <div class="row">
+        <div class="col-7">
+          <div class="info-pane meal-details-pane">
+            <header><h2>Enter the Meal Details</h2></header>
+            <form class="meal-form">
+              <fieldset>
+                <label for="base-meal-price"
+                  >Base Meal Price: $
+                  <input
+                    required
+                    type="text"
+                    name="base-meal-price"
+                    class="js-price-input price-input"
+                  />
+                </label>
+                <label for="tax-rate"
+                  >Tax Rate: %
+                  <input
+                    required
+                    type="text"
+                    name="tax-rate"
+                    class="js-tax-input tax-input"
+                  />
+                </label>
+                <label for="tip-rate"
+                  >Tip Rate: %
+                  <input
+                    required
+                    type="text"
+                    name="tip-rate"
+                    class="js-tip-input tip-input"
+                  />
+                </label>
+                <button type="submit">Submit</button>
+                <button class="js-cancel-button cancel-button">Cancel</button>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="col-5">
+          <div class="info-pane charges-pane">
+            <header><h2>Customer Charges</h2></header>
+            <label for="subtotal">
+              Subtotal $
+              <input
+                disabled
+                type="text"
+                name="subtotal"
+                class="js-subtotal subtotal"
+              />
+            </label>
+            <label for="tip">
+              Tip $ <input disabled type="text" name="tip" class="js-tip tip" />
+            </label>
+            <label for="total">
+              Total $
+              <input disabled type="text" name="total" class="js-total total" />
+            </label>
+          </div>
+          <div class="info-pane earnings-pane">
+            <header><h2>My Earnings Info</h2></header>
+            <label for="tip-total">
+              Tip Total: $
+              <input
+                disabled
+                type="text"
+                name="tip-total"
+                class="js-tip-total tip-total"
+              />
+            </label>
+            <label for="meal-count">
+              Meal Count:
+              <input
+                disabled
+                type="text"
+                name="meal-count"
+                class="js-meal-count meal-count"
+              />
+              <label for="avg-per-meal">
+                Average Tip Per Meal: $
+                <input
+                  disabled
+                  type="text"
+                  name="avg-tip-per-meal"
+                  class="js-avg-tip avg-tip"
+                />
+              </label>
+            </label>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
